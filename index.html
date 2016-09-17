@@ -46,6 +46,8 @@
 	        
 				<li><a href="/tags/随笔">随笔</a></li>
 	        
+				<li><a href="/tags/技术">技术</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -75,11 +77,9 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github">github</a>
+					<a class="github" target="_blank" href="https://github.com/neverlandsen" title="github">github</a>
 		        
 					<a class="weibo" target="_blank" href="http://weibo.com/algae2011" title="weibo">weibo</a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss">rss</a>
 		        
 					<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
 		        
@@ -113,16 +113,16 @@
 		        
 					<li><a href="/tags/随笔">随笔</a></li>
 		        
+					<li><a href="/tags/技术">技术</a></li>
+		        
 				</ul>
 			</nav>
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github">github</a>
+						<a class="github" target="_blank" href="https://github.com/neverlandsen" title="github">github</a>
 			        
 						<a class="weibo" target="_blank" href="http://weibo.com/algae2011" title="weibo">weibo</a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss">rss</a>
 			        
 						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
 			        
@@ -134,6 +134,93 @@
 
       <div class="body-wrap">
         
+  
+    <article id="post-记Hexo-Github搭建博客" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/17/记Hexo-Github搭建博客/">记Hexo+Github搭建博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作为一个技术小白，心血来潮想自己搭个博客玩玩，又对自己的记忆能力和更博频率很是没有信心。所以想以第一篇博文来记录下自己糊里糊涂的搭建过程，方便自己以后回顾，顺便第一次使用Markdown也算是熟悉下语法。搭建过程都是来自网上教程参考。下面开始~</p>
+<h2 id="Github建立仓库"><a href="#Github建立仓库" class="headerlink" title="Github建立仓库"></a>Github建立仓库</h2><p>登陆Github网站,点击New repository新建一个仓库，在仓库名输入username.github.io，当然username是自己的账号名啦。这里使用的是Github提供的Pages服务。</p>
+<h2 id="Hexo环境搭建及安装"><a href="#Hexo环境搭建及安装" class="headerlink" title="Hexo环境搭建及安装"></a>Hexo环境搭建及安装</h2><ol>
+<li>下载Node.js<br>用于生成静态页面</li>
+<li>下载Github for windows<br>用于把本地Hexo内容提交到github上去</li>
+<li>安装Hexo<br>首先在想要放置的位置建立一个文件夹如blog(比如我是以E盘作为本地位置)，执行如下命令安装Hexo：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd E:\blog</div><div class="line">npm install hexo-cli -g</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>初始化Hexo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init</div></pre></td></tr></table></figure></p>
+<p>初始化成功后，执行以下命令进行本地预览：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo generate</div><div class="line">hexo server</div></pre></td></tr></table></figure></p>
+<p>提示成功后，在浏览器地址栏输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> ，就可以预览本地博客了，如不成功可在设置文件里更改端口号试试。</p>
+<h2 id="将本地博客部署到Github"><a href="#将本地博客部署到Github" class="headerlink" title="将本地博客部署到Github"></a>将本地博客部署到Github</h2><ol>
+<li><p>配置Github<br>用文本编辑器打开blog文件夹下的_config.yml文件，把deploy标签下内容修改如下，其中repo填写自己的github仓库地址：<br> type: git<br> repo: <a href="https://github.com/username/username.github.io.git" target="_blank" rel="external">https://github.com/username/username.github.io.git</a><br> branch: master<br>之后在Git Shell中输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>之后每次部署，输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo generate</div><div class="line">hexo deploy</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>其中generate与deploy可以组合执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo g -d</div></pre></td></tr></table></figure></p>
+<p>到这一步，通过username.github.io就可以访问自己的博客了。</p>
+<p>##更换主题<br>作为外貌协会一员，默认主题兼职不能忍，看到网上大家都推荐yilia主题，果断拿来用了，感谢作者~</p>
+<ol>
+<li><p>首先是下载<br>在blog路径下输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone http://github.com/litten/hexo-theme-yilia.git themes/yilia</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置<br>打开blog根目录下的配置文件_config.yml，修改主题theme: yilia，顺便，还可以修改title，subtitle，description，author，language等等。<br>打开themes\yilia文件下的配置文件_config.yml，可以修改主页menu，个人链接，头像url，友情链接等等。</p>
+</li>
+<li>部署<br>依次clean generate deploy，刷新下自己的页面，是不是就修改成功了呢~</li>
+</ol>
+<h2 id="发表文章"><a href="#发表文章" class="headerlink" title="发表文章"></a>发表文章</h2><p>在blog路径下输入命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new &quot;文章名&quot;</div></pre></td></tr></table></figure></p>
+<p>之后本地blog\source_posts文件下就多了一个 文章名.md 文件，然后就可以使用Markdown编辑器来写博文了。<br>也可以使用新建页面命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new page &quot;页面名&quot;</div></pre></td></tr></table></figure></p>
+<p>博文写好后，执行上述部署的三条命令，就可以把博客部署到Github上去了。</p>
+<h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>由于自己穷困潦倒，目前还没有执行此步骤。只好留待他日解决吧。</p>
+<h2 id="实现双电脑博客同步"><a href="#实现双电脑博客同步" class="headerlink" title="实现双电脑博客同步"></a>实现双电脑博客同步</h2><p>刚搭完环境就想着如果换了电脑怎么同步更新博文，试着在Github仓库(主分支为master)新建了hexo分支，并把source文件夹和yilia主题配置文件push了上去。由于第一次接触git，还没搞清版本控制的一些原理知识，所以以下内容只是暂时之想，不知道实行起来如何。</p>
+<p>每次更新完博文后并且部署完毕后，都把最新的source文件夹push到分支hexo上去。换电脑后，pull下source文件夹，替换本地sourse文件？然后再执行更新博文的步骤。</p>
+<hr>
+<p>以上。<br>——写于2016.9.17</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/09/17/记Hexo-Github搭建博客/" class="archive-article-date">
+  	<time datetime="2016-09-17T02:48:58.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-17</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
   
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -272,7 +359,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				
+    				<a href="/tags/技术/" style="font-size: 10px;">技术</a>
     			</div>
     	</section>
     
@@ -302,7 +389,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-me">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">一只刚刚起步正慢吞吞学技术的小白。</div>
   	  	
     	</section>
     
